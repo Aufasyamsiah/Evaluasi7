@@ -38,19 +38,17 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
      {
-        $mahasiswa = new mahasiswa;
-        $mahasiswa->nama = $request->nama;
-        $mahasiswa->TTL = $request->TTL;
-        $mahasiswa->umur = $request->umur;
-        $mahasiswa->alamat = $request->alamat;
-
-
         $request->validate([
             'nama' => 'required',
             'TTL' => 'required',
             'umur' => 'required',
             'alamat' => 'required',
         ]);
+        $mahasiswa = new mahasiswa;
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->TTL = $request->TTL;
+        $mahasiswa->umur = $request->umur;
+        $mahasiswa->alamat = $request->alamat;
 
         $mahasiswa->save();
         return redirect('/mahasiswa')->with('status', 'Data Mahasiswa Berhasil Ditambahkan!');
